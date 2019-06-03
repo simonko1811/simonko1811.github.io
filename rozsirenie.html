@@ -29,9 +29,7 @@
   <section>
     <p> Celá aplikácia bola rozšírená o hardvérovú časť, ktorú tvorí Arduino. Toto arduino slúži na posielanie nameraných dát (v mojom prípade náhodne generované) cez WiFi modul do databázy na primárnom zariadení (PC) - teda potrebuje ip adresu PC.
 Na úspešné poslanie dát ako vo forme správy, musí mať toto zariadenie autorizovaný prístup do DB. To znamená, že musí mať správny token, ktorý patri adminovi.   </p>
-<p>
-Do aplikácie boli tiež pridané nové programy, ktoré slúžia na obsluhu a spracovanie hodnôt poslaných z pridaného hardvéru (Arduino TTGO). Programy boli pridané nie len do WindFarmDemo ale aj do WindFarmDemoWeb.
-Vo WindFarmDemoWeb boli pridané programy na zobrazovanie údajov v databáze na grafe. Graf je možne opätovne zobraziť aj so zmenami, ktoré nastali v DB. </p>
+
 <p>
 V časti WindFarmDemo bolo pridané niekoľko prvkov. Prvy bola vytvorená tabuľka v DB, ktorá slúži na ukladanie dát z Arduina. Takuľka sa skladá zo 4 stĺpcov - id, kto, co a datetime. Tieto stĺpce udávajú atribúty jednotlivým údajom.
 Každá nameraná hodnota má pri pridaní do databázi priradenú hodnotu id, ktorá je auto-inkrementujúca. Zároveň pomocou tejto hodnoty sa využívajú operácie UPDATE a DELETE.    </p>
@@ -42,6 +40,9 @@ Operácia UPDATE slúži na úpravu už uložených dát v DB. Na zmenu konkrét
 <p>
 Operácia DELETE slúži na vymazanie dát z DB. Pri tento operácii nám stačí zadať id hodnoty, ktorú chceme vymazať.  </p>
   <h2>HW klient</h2>
+  <p>
+Do aplikácie boli tiež pridané nové programy, ktoré slúžia na obsluhu a spracovanie hodnôt poslaných z pridaného hardvéru (<a class="nav-link" href="https://www.youtube.com/watch?v=cjVwTf8iDFY">TTGO - esp32</a> WiFi based mikrokontrolér, Arduino klon). Programy boli pridané nie len do WindFarmDemo ale aj do WindFarmDemoWeb.
+Vo WindFarmDemoWeb boli pridané programy na zobrazovanie údajov v databáze na grafe. Graf je možne opätovne zobraziť aj so zmenami, ktoré nastali v DB. </p>
     <img src="esp32.jpg" alt="">  
 
   </section>
