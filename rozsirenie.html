@@ -27,11 +27,22 @@
   </ul>
 </header>
   <section>
-     Celá aplikácia bola rozšírená o hardvérovú časť, ktorú tvorí Arduino. Toto arduino slúži na posielanie nameraných dát (v mojom prípade náhodne generované) cez WiFi modul do databázy na primárnom zariadení (PC) - teda potrebuje ip adresu PC.
-Na úspešné poslanie dát ako vo forme správy, musí mať toto zariadenie autorizovaný prístup do DB. To znamená, že musí mať správny token, ktorý patri adminovi. 
+    <p> Celá aplikácia bola rozšírená o hardvérovú časť, ktorú tvorí Arduino. Toto arduino slúži na posielanie nameraných dát (v mojom prípade náhodne generované) cez WiFi modul do databázy na primárnom zariadení (PC) - teda potrebuje ip adresu PC.
+Na úspešné poslanie dát ako vo forme správy, musí mať toto zariadenie autorizovaný prístup do DB. To znamená, že musí mať správny token, ktorý patri adminovi.   </p>
+<p>
 Do aplikácie boli tiež pridané nové programy, ktoré slúžia na obsluhu a spracovanie hodnôt poslaných z pridaného hardvéru (Arduino TTGO). Programy boli pridané nie len do WindFarmDemo ale aj do WindFarmDemoWeb.
-Vo WindFarmDemoWeb boli pridané programy na zobrazovanie údajov v databáze na grafe. Graf je možne opätovne zobraziť aj so zmenami, ktoré nastali v DB.
-V časti WindFarmDemo bolo pridané niekoľko prvkov. Prvy bola tabuľka v DB, ktorá slúži na ukladanie dát z Arduina.
+Vo WindFarmDemoWeb boli pridané programy na zobrazovanie údajov v databáze na grafe. Graf je možne opätovne zobraziť aj so zmenami, ktoré nastali v DB. </p>
+<p>
+V časti WindFarmDemo bolo pridané niekoľko prvkov. Prvy bola vytvorená tabuľka v DB, ktorá slúži na ukladanie dát z Arduina. Takuľka sa skladá zo 4 stĺpcov - id, kto, co a datetime. Tieto stĺpce udávajú atribúty jednotlivým údajom.
+Každá nameraná hodnota má pri pridaní do databázi priradenú hodnotu id, ktorá je auto-inkrementujúca. Zároveň pomocou tejto hodnoty sa využívajú operácie UPDATE a DELETE.    </p>
+<p>
+Ďalšími atribútmi sú kto a čo. Tieto atribúty reprezentujú senzor, z ktorého boli dáta získané a ním namerané hodnoty. Posledným atribútom, ktorý sa ukladá je datetime. Ten je automaticky ukladaný podľa času operačného systému.  </p>
+<p>
+Operácia UPDATE slúži na úpravu už uložených dát v DB. Na zmenu konkrétnych dát musíme avšak vedieť id tohto údaju. Pri UPDATE vieme upraiť atribúty kto a čo.             </p>
+<p>
+Operácia DELETE slúži na vymazanie dát z DB. Pri tento operácii nám stačí zadať id hodnoty, ktorú chceme vymazať.  </p>
+  <h2>HW klient</h2>
+    <img src="esp32.jpg" alt="">  
 
   </section>
 <footer>
