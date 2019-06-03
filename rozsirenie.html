@@ -30,6 +30,11 @@
   </ul>
 </header>
   <section>
+     Celá aplikácia bola rozšírená o hardvérovú časť, ktorú tvorí Arduino. Toto arduino slúži na posielanie nameraných dát (v mojom prípade náhodne generované) cez WiFi modul do databázy na primárnom zariadení (PC) - teda potrebuje ip adresu PC.
+Na úspešné poslanie dát ako vo forme správy, musí mať toto zariadenie autorizovaný prístup do DB. To znamená, že musí mať správny token, ktorý patri adminovi. 
+Do aplikácie boli tiež pridané nové programy, ktoré slúžia na obsluhu a spracovanie hodnôt poslaných z pridaného hardvéru (Arduino TTGO). Programy boli pridané nie len do WindFarmDemo ale aj do WindFarmDemoWeb.
+Vo WindFarmDemoWeb boli pridané programy na zobrazovanie údajov v databáze na grafe. Graf je možne opätovne zobraziť aj so zmenami, ktoré nastali v DB.
+V časti WindFarmDemo bolo pridané niekoľko prvkov. Prvy bola tabuľka v DB, ktorá slúži na ukladanie dát z Arduina.
 
   </section>
 <footer>
