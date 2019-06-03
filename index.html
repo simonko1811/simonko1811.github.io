@@ -1,7 +1,138 @@
-<!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sk-SK" lang="sk-SK" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <!--zadefinovanie znakov aj slovenskych a ich zobrazovanie-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <META HTTP-EQUIV="refresh" CONTENT="300">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WindFarmDemo REST service - semestrálka</title>
+  <link rel="shortcut icon" href="images/pssro_logo.ico" />
+  <link rel="stylesheet" href="cnc.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <header>
+  <h1>WindFarmDemo REST service - semestrálka</h1>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="index.php">https://simonko1811.github.io/</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="uvod.html">Úvod</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="uvod.html">Rozšírenie oproti originálu</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="uvod.html">GIT repozitár</a>
+    </li>
+  </ul>
+</header>
+  <section>
+    <article class="md-content__inner md-typeset">
+      <a href="https://github.com/simonko1811/WindFarmDemo/blob/master/README.md" title="Upraviť túto stránku" class="md-icon md-content__icon"></a>
+      <h1 id="uvod">Úvod<a class="headerlink" href="#uvod" title="Permanent link">¶</a></h1>
+      <p>Windfarmdemo je aplikácia postavená na frameworku <a href="https://www.dropwizard.io/">dropwizard</a>, ktorý je poskladaný z nasledujúcich knižníc:</p>
+      <ul>
+        <li><a href="http://www.eclipse.org/jetty/">Jetty</a> HTTP web server.</li>
+        <li><a href="https://jersey.github.io/">Jersey</a>  RESTové rozhranie.</li>
+        <li><a href="https://github.com/FasterXML/jackson">Jackson</a> JSON serializovanie a deserializovanie.</li>
+        <li><a href="http://logback.qos.ch/">Logback</a> logovanie.</li>
+        <li><a href="http://hibernate.org/validator/">Hibernate Validator</a> validovanie dát'.</li>
+        <li><a href="http://metrics.dropwizard.io/">Metrics</a> na to, aby sme zistili „čo robí vaša aplikácia“ </li>
+        <li><a href="http://www.jdbi.org/">JDBI</a> a <a href="http://www.hibernate.org/orm/">Hibernate</a> databáza</li>
+        <li><a href="http://www.liquibase.org/">Liquibase</a> migrácia.</li>
+        <li><a href="https://freemarker.apache.org/">FreeMarker</a> a <a href="https://mustache.github.io/">mustache</a> generovanie webových stránok</li>
+      </ul>
+      <h3 id="ukazkova-aplikacia">Ukážková aplikácia<a class="headerlink" href="#ukazkova-aplikacia" title="Permanent link">¶</a></h3>
+      <p>Táto aplukácia demoštruje použitie nasladujúcich knižníc a častí dropwizardu:</p>
+      <ul>
+        <li>REST rozhranie vytvorené za pomoci Jersey resp. JAX-RS API. Implementované v priečinku <code>Resources</code></li>
+        <li>Využitie databázy za pomoci Hibernate frameworku</li>
+        <li><code>PersonDao</code> ilustruje použitie DAO(data access objekt) objektu pristupujúceho k dátam s použitím hibernate. Na prístup k dátam sa používa ako jazyk <code>HQL</code> tak aj prístup pomocou <code>JPA Criteria API</code> </li>
+        <li><code>Person</code> ilustruje mapovanie Java objektov na tabuľky v databáze použitím JPA anotácií. </li>
+        <li>Aplikácia obsahuje implementáciu autorizačného OAuth2 servisu, ktorý implementuje dva základné toky <code>implicit, code</code>. Tento servis sa dá použiť na generovanie JWT prístupových tokenov.</li>
+        <li>Jednotlivé REST zdroje sú zabezpečené pomocou OAuth2  prístupového tókenu. </li>
+      </ul>
+      <h2 id="poziadavky-na-spojenie-s-db">Požiadavky na spojenie s DB<a class="headerlink" href="#poziadavky-na-spojenie-s-db" title="Permanent link">¶</a></h2>
+      <p>Aplikácia na spustenie vyžaduje existujúcu databázu MariaDB s nasledujúcimi parametrami:</p>
+      <ul>
+        <li>URL: <code>localhost:3306</code></li>
+        <li>Typ databázy: <code>MariaDB</code></li>
+        <li>Názov vyvorenej databázy: <code>windfarmdemoDB</code></li>
+        <li>Užívatel: <code>windfarmdemo</code></li>
+        <li>Heslo: <code>G1PpyytVE8Zy8kHE</code></li>
+      </ul>
+      <p>Štandardné nastavenie môžete zmeniť v súbore: <code>config.yml</code></p>
+      <div class="admonition note">
+      <p class="admonition-title">Inštalácia MariaDB</p>
+      <p>Na inštalovanie databázy odporúčam použiť balík XAMPP, ktorý obsahuje Apache + MariaDB + PHP + Perl. Databázu može konfigurovať pomocou PHPmyadmin prostredia.   <a href="https://www.apachefriends.org/index.html">XAMPP</a></p>
+      </div>
+      <h2 id="odkazy">Odkazy<a class="headerlink" href="#odkazy" title="Permanent link">¶</a></h2>
+      <p>REST klient a JSON</p>
+      <ul>
+        <li><a href="http://square.github.io/retrofit/"><strong>Retrofit</strong></a> : Typovo bezpečný HTTP klient pre Android a Java </li>
+        <li><a href="http://www.jsonschema2pojo.org/"><strong>jsonschema2pojo</strong></a> <strong>:</strong> Generátor POJO objektov pre Java jazyku s JSON alebo JSON-Schema</li>
+        <li><a href="https://reqres.in/"><strong>reqres.in</strong></a> : Testovacie REST API</li>
+        <li><a href="https://jsonplaceholder.typicode.com/">https://jsonplaceholder.typicode.com/</a></li>
+      </ul>
+      <p>Dropwizzard:</p>
+      <ul>
+        <li><a href="http://www.dropwizard.io/1.3.9/docs/getting-started.html">Docs</a></li>
+        <li><a href="https://jersey.github.io/documentation/latest/jaxrs-resources.html">Jax-RX api</a></li>
+      </ul>
+      <p>OAuth2.0:</p>
+      <ul>
+        <li><a href="https://hackernoon.com/demystifying-oauth-2-0-and-openid-connect-and-saml-12aa4cf9fdba
+          https://youtu.be/996OiexHze0
+          http://dmpc.dbp.fmph.uniba.sk/~rybar/it-software/docs/infoware-OpenID.pdf
+          https://developer.okta.com/blog/2018/05/24/what-is-the-oauth2-implicit-grant-type">OAUTH/OPENID</a></li>
+        <li><a href="https://youtu.be/996OiexHze0">Prednáška</a></li>
+        <li><a href="https://developer.okta.com/blog/2018/05/24/what-is-the-oauth2-implicit-grant-type">Implicit flow</a></li>
+        <li><a href="https://developer.okta.com/blog/2018/04/10/oauth-authorization-code-grant-type">Code flow</a></li>
+      </ul>
+      <p>Bezpečnosť</p>
+      <ul>
+        <li><a href="https://spin.atomicobject.com/2016/07/26/dropwizard-dive-part-1/">Custum Authenticaion</a></li>
+        <li><a href="https://dzone.com/articles/getting-started-dropwizard-0">HTTPS</a></li>
+      </ul>
+      <p>Hibernate:</p>
+      <ul>
+        <li><a href="https://www.baeldung.com/tag/hibernate/">Hibernate rôzne návody</a></li>
+        <li><a href="https://docs.jboss.org/hibernate/orm/5.3/topical/html_single/metamodelgen/MetamodelGenerator.html">Metamodel generator</a></li>
+        <li><a href="http://docs.jboss.org/hibernate/orm/5.4/quickstart/html_single/">Getting started</a></li>
+        <li><a href="http://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html">Dokumentácia</a></li>
+      </ul>
+      <p>Freemarker:</p>
+      <ul>
+        <li><a href="https://freemarker.apache.org/docs/index.html">Dokumentácia</a></li>
+      </ul>
+      <p>Css šablóna:</p>
+      <ul>
+        <li><a href="https://materializecss.com">Materializecss</a></li>
+      </ul>
+      <p>Javascript:
+        <ul>
+          <li><a href="http://jquery.com/">Jquery  knižnica</a></li>
+          <li><a href="https://www.chartjs.org/docs/latest/">Grafy</a></p></li>
+        </ul>
+      <p>Swagger - generátor api dokumentácie:</p>
+      <ul>
+        <li>
+        <p><a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations">Java anotácie</a> </p>
+        </li>
+        <li>
+        <p><a href="https://swagger.io/">Swagger</a></p>
+        </li>
+      </ul>
+
+    </article>
+  </section>
+<footer>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+<a class="navbar-brand" href="http://pavel-simon.com" target="_blank"><img src="images/pssro_logo.ico" alt="Pavel ŠIMON s.r.o." />&nbsp;&#9400; Pavel ŠIMON s.r.o.</a>2018
+</nav>
+</footer>
 </body>
 </html>
